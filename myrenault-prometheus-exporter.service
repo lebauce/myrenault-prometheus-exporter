@@ -1,0 +1,15 @@
+[Unit]
+Description=MyRenault prometheus exporer
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10m
+RuntimeMaxSec=1d
+User=myrenault
+ExecStart=/var/lib/myrenault-prometheus-exporter/bin/myrenault-prometheus-exporter
+
+[Install]
+WantedBy=multi-user.target
