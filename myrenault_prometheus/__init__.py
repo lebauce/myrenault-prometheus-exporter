@@ -31,16 +31,23 @@ async def run():
 
         while True:
             battery_status = await vehicle.get_battery_status()
-            print(battery_status)
 
-            battery_level.set(battery_status.batteryLevel)
-            battery_temperature.set(battery_status.batteryTemperature)
-            battery_autonomy.set(battery_status.batteryAutonomy)
-            battery_available_energy.set(battery_status.batteryAvailableEnergy)
-            plug_status.set(battery_status.plugStatus)
-            charging_status.set(battery_status.chargingStatus)
-            charging_remaining_time.set(battery_status.chargingRemainingTime)
-            charging_instantaneous_power.set(battery_status.chargingInstantaneousPower)
+            if battery_status.batteryLevel != None:
+                battery_level.set(battery_status.batteryLevel)
+            if battery_status.batteryTemperature != None:
+                battery_temperature.set(battery_status.batteryTemperature)
+            if battery_status.batteryAutonomy != None:
+                battery_autonomy.set(battery_status.batteryAutonomy)
+            if battery_status.batteryAvailableEnergy != None:
+                battery_available_energy.set(battery_status.batteryAvailableEnergy)
+            if battery_status.plugStatus != None:
+                plug_status.set(battery_status.plugStatus)
+            if battery_status.chargingStatus != None:
+                charging_status.set(battery_status.chargingStatus)
+            if battery_status.chargingRemainingTime != None:
+                charging_remaining_time.set(battery_status.chargingRemainingTime)
+            if battery_status.chargingInstantaneousPower != None:
+                charging_instantaneous_power.set(battery_status.chargingInstantaneousPower)
 
             cockpit = await vehicle.get_cockpit()
             total_mileage.set(cockpit.totalMileage)
